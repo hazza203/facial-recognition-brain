@@ -3,7 +3,8 @@ import {
 	REQUEST_FACE_MATCH_PENDING,
 	REQUEST_FACE_MATCH_SUCCESS,
 	REQUEST_FACE_MATCH_FAILED,
-	INPUT_CHANGED
+	INPUT_CHANGED,
+	//ROUTE_CHANGED
 } from './constants.js'
 
 const app = new Clarifai.App({
@@ -21,4 +22,9 @@ export const requestFaceMatch = (url) => (dispatch) => {
 export const inputChanged = (text) => ({
 	type: INPUT_CHANGED,
 	payload: text
+})
+
+export const routeChanged = (route) => ({
+	type: 'ROUTE_CHANGED',
+	payload: route
 })

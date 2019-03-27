@@ -2,7 +2,8 @@ import {
 	INPUT_CHANGED, 
 	REQUEST_FACE_MATCH_PENDING,
 	REQUEST_FACE_MATCH_SUCCESS,
-	REQUEST_FACE_MATCH_FAILED
+	REQUEST_FACE_MATCH_FAILED,
+	//ROUTE_CHANGED
 } from './constants.js'
 
 const initial_face_match_state = {
@@ -46,5 +47,22 @@ export const inputChanged = ( state=initial_input_state, action={} ) => {
 			return Object.assign({}, state, {inputField: action.payload})
 		default: 
 			return state
+	}
+}
+
+const initial_route_state = {
+	route: 'signin',
+	isSignedIn: false
+}
+
+export const routeChanged = ( state=initial_route_state, action={} ) => {
+	switch(action.payload){
+		case 'home':
+			return Object.assign({}, state, {route: action.payload, isSignedIn: true})
+		case 'register':
+		case 'signIn':
+			return Object.assign({}, state, {route: action.payload, isSignedIn: false})
+	default: 
+		return state
 	}
 }
