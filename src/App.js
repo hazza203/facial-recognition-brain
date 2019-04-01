@@ -10,7 +10,6 @@ import Register from './components/Register/Register.js'
 import Particles from 'react-particles-js'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import { particleOptions } from './particleOptions.js'
-
 import {routeChanged, inputChanged, requestFaceMatch} from './actions.js'
 
 const mapStateToProps = (state) => {
@@ -33,6 +32,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 class App extends Component {
+
+  componentDidMount(){
+    fetch('http://localhost:3000')
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }
 
   render() {
     const { route, isSignedIn, inputField, onInputChange, onRequestFaceMatch, onRouteChange, faceBox} = this.props
