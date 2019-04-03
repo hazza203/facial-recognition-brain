@@ -4,6 +4,7 @@ import {
 	REQUEST_FACE_MATCH_SUCCESS,
 	REQUEST_FACE_MATCH_FAILED,
 	INPUT_CHANGED,
+	USER_CHANGED,
 	//ROUTE_CHANGED
 } from './constants.js'
 
@@ -27,4 +28,9 @@ export const inputChanged = (text) => ({
 export const routeChanged = (route) => ({
 	type: 'ROUTE_CHANGED',
 	payload: route
+})
+
+export const userChanged = (user) => ({
+	type: USER_CHANGED,
+	payload: user
 })

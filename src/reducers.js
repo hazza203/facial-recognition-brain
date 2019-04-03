@@ -3,6 +3,7 @@ import {
 	REQUEST_FACE_MATCH_PENDING,
 	REQUEST_FACE_MATCH_SUCCESS,
 	REQUEST_FACE_MATCH_FAILED,
+	USER_CHANGED
 	//ROUTE_CHANGED
 } from './constants.js'
 
@@ -62,7 +63,26 @@ export const routeChanged = ( state=initial_route_state, action={} ) => {
 		case 'register':
 		case 'signIn':
 			return Object.assign({}, state, {route: action.payload, isSignedIn: false})
-	default: 
-		return state
+		default: 
+			return state
+	}
+}
+
+const initial_user_state = {
+	user: {
+		id: '',
+		name: '',
+		email: '', 
+		entries: 0, 
+		joined: ''
+	}
+}
+
+export const userChanged = ( state=initial_user_state, action={} ) => {
+	switch(action.type){
+		case USER_CHANGED: 
+			return Object.assign({}, state, {user: action.payload})
+		default: 
+			return state
 	}
 }

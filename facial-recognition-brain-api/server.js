@@ -38,12 +38,14 @@ app.get('/', (req, res) => {
 //Post call which validates and signs in a user
 app.post('/signin', (req, res) => {	
 	let foundUser = false
+	let returnUser = {}
 	for (user of database.users){
 		if(req.body.email === user.email) {
 			foundUser = true
+			returnUser = user
 			bcrypt.compare(req.body.password, user.passwordHash, function(err, result) {
 				if(result){
-					return res.json('success')
+					return res.json(returnUser)
 				} else {
 					return res.status(400).json('invalid login')
 				}
@@ -66,7 +68,7 @@ app.post('/register', (req, res) => {
 			email: email,
 			password: hash,
 			entries: 0,
-			date: new Date()
+			joined: new Date()
 		})
 
 	res.json(database.users[database.users.length - 1])

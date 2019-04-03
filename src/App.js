@@ -10,7 +10,7 @@ import Register from './components/Register/Register.js'
 import Particles from 'react-particles-js'
 import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import { particleOptions } from './particleOptions.js'
-import {routeChanged, inputChanged, requestFaceMatch} from './actions.js'
+import {routeChanged, inputChanged, requestFaceMatch, userChanged} from './actions.js'
 
 const mapStateToProps = (state) => {
   return {
@@ -19,7 +19,8 @@ const mapStateToProps = (state) => {
     inputField: state.inputChanged.inputField,
     isPending: state.requestFaceMatch.isPending,
     faceBox: state.requestFaceMatch.faceBox,
-    err: state.requestFaceMatch.err
+    err: state.requestFaceMatch.err,
+    user: state.userChanged.user
   }
 }
 
@@ -27,7 +28,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onInputChange: (event) => dispatch(inputChanged(event.target.value)),
     onRequestFaceMatch: () => dispatch(requestFaceMatch()),
-    onRouteChange: () => dispatch(routeChanged())
+    onRouteChange: () => dispatch(routeChanged()),
+    onRegister: () => dispatch(userChanged())
   }
 }
 
@@ -40,23 +42,24 @@ class App extends Component {
   }
 
   render() {
-    const { route, isSignedIn, inputField, onInputChange, onRequestFaceMatch, onRouteChange, faceBox} = this.props
+    const { route, user, isSignedIn, inputField, onInputChange, onRequestFaceMatch, onRouteChange, faceBox} = this.props
+    console.log(user)
     return (
       <div className="App">
         <Particles className='particles'
           params={particleOptions}/>
-        <Navigation onRouteChange={onRouteChange} isSignedIn={isSignedIn} />
+        <Navigation onRouteChange={onRouteChange} isSignedIn={isSignedIn} onSignOut={userChanged} />
         {
           route === 'register' ? 
-            <Register onRouteChange={onRouteChange} />
+            <Register/>
           : (route === 'home' ?
               <div>
                 <Logo />
-                <Rank />
+                <Rank user={user}/>
                 <ImageLinkForm onInputChange={onInputChange} onRequestFaceMatch={onRequestFaceMatch} inputField={inputField}/>
                 <FaceRecognition imageUrl={inputField} faceBox={faceBox} />
               </div>
-            : <Signin onRouteChange={onRouteChange} />
+            : <Signin/>
             )
         }
       </div>

@@ -1,23 +1,35 @@
 import React from 'react'
 import './Navigation.css'
-import { routeChanged } from '../../actions.js'
+import { routeChanged, userChanged } from '../../actions.js'
 import { connect } from 'react-redux'
 
 let routeTo = ''
+let user = {
+	id: '',
+	name: '',
+	email: '', 
+	entries: 0, 
+	joined: ''
+}
+
 
 const mapStateToProps = (state) => {
   return {
     route: state.routeChanged.route,
+    user: state.userChanged.user
+
   }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onRouteChange: () => dispatch(routeChanged(routeTo))
+    onRouteChange: () => dispatch(routeChanged(routeTo)),
+    onSignOut: () => dispatch(userChanged(user))
   }
 }
 
-const Navigation = ({onRouteChange, isSignedIn}) => {
+const Navigation = ({onRouteChange, isSignedIn, onSignOut}) => {
+
 	if(isSignedIn){
 		return(
 			<nav>
@@ -43,6 +55,7 @@ const Navigation = ({onRouteChange, isSignedIn}) => {
 	}
 	function signOut(){
 		routeTo = 'signIn'
+		onSignOut()
 		onRouteChange()
 	}
 }

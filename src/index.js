@@ -4,14 +4,14 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import { routeChanged, inputChanged, requestFaceMatch } from './reducers.js'
+import { routeChanged, inputChanged, requestFaceMatch, userChanged} from './reducers.js'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 
 const logger = createLogger();
-const rootReducer = combineReducers({routeChanged, inputChanged, requestFaceMatch});
+const rootReducer = combineReducers({routeChanged, inputChanged, requestFaceMatch, userChanged});
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 
 ReactDOM.render(
