@@ -13,7 +13,7 @@ export const requestFaceMatch = (url, id) => (dispatch) => {
 		dispatch({type: RESET_BOX})
 	} else {
 		dispatch({ type: REQUEST_FACE_MATCH_PENDING })
-		fetch('http://localhost:3000/imageUrl', {
+		fetch('https://still-hamlet-40609.herokuapp.com/imageUrl', {
   		method: 'post',
   		headers: {'Content-Type': 'application/json'},
   		body: JSON.stringify({
@@ -23,19 +23,21 @@ export const requestFaceMatch = (url, id) => (dispatch) => {
   	.then(response => response.json())
     .then(response => {
     	dispatch({ type: REQUEST_FACE_MATCH_SUCCESS, payload: response })
-    	fetch('http://localhost:3000/image', {
+    	fetch('https://still-hamlet-40609.herokuapp.com/image', {
     		method: 'put',
     		headers: {'Content-Type': 'application/json'},
     		body: JSON.stringify({
     			id: id
     		})
-    	}).catch(console.log('Failed to update users score'))
-    	setTimeout(() => {
-		    fetch('http://localhost:3000/profile/'+id)
-    		.then(res => res.json())
-    		.then(data => dispatch(userChanged(data)))  
-    		.catch(console.log('Failed to get users updated profile'))
-		  }, 100)   	 		
+    	}).then(
+	    		setTimeout(() => {
+		    		fetch('https://still-hamlet-40609.herokuapp.com/profile/'+id)
+		    		.then(res => res.json())
+		    		.then(data => dispatch(userChanged(data)))  
+		    		.catch(console.log('Failed to get users updated profile'))
+		    		}, 500))
+    		.catch(console.log('Failed to update users score'))
+    		
    	})
     .catch(err => dispatch({ type: REQUEST_FACE_MATCH_FAILED, payload: err }))
 	}
