@@ -29,8 +29,8 @@ function validate(email, password) {
   // true means invalid, so our conditions got reversed
 
   return {
-    signInEmail: email.length === 0 || !email.includes('@'),
-    signInPassword: password.length < 4,
+    signInEmail: email.length === 0 || !email.includes('@') || !email.includes('.', email.indexOf('@')),
+    signInPassword: password.length < 8,
   };
 }
 

@@ -25,11 +25,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 }
 
 function validate(email, password, name) {
+	let strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})")
   // true means invalid, so our conditions got reversed
 
   return {
-    email: email.length === 0 || !email.includes('@'),
-    password: password.length < 4,
+    email: email.length === 0 || !email.includes('@') || !email.includes('.', email.indexOf('@')),
+    password: password.length < 8 || !strongRegex.test(password),
     name: name.length < 3
   };
 }

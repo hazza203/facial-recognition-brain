@@ -4,7 +4,8 @@ import {
 	REQUEST_FACE_MATCH_SUCCESS,
 	REQUEST_FACE_MATCH_FAILED,
 	USER_CHANGED,
-	INCREMENT_ENTRIES
+	INCREMENT_ENTRIES,
+	RESET_BOX
 	//ROUTE_CHANGED
 } from './constants.js'
 
@@ -34,6 +35,8 @@ export const requestFaceMatch = ( state=initial_face_match_state, action={} ) =>
 		}
 		case REQUEST_FACE_MATCH_FAILED:
 			return Object.assign({}, state, {err: action.payload, isPending:false})
+		case RESET_BOX:
+			return Object.assign({}, state, {faceBox: [], err: "", isPending:false})
 		default:
 			return state
 	}
@@ -68,7 +71,7 @@ export const routeChanged = ( state=initial_route_state, action={} ) => {
 			return state
 	}
 }
-
+ 
 const initial_user_state = {
 	user: {
 		id: '',
