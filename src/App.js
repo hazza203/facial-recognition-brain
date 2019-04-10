@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     onRegister: () => dispatch(userChanged())
   }
 }
-
+ 
 class App extends Component {
 
   componentDidMount(){
@@ -55,8 +55,8 @@ class App extends Component {
           : (route === 'home' ?
               <div>
                 <Logo />
-                <Rank user={user}/>
-                <ImageLinkForm onInputChange={onInputChange} onRequestFaceMatch={onRequestFaceMatch} inputField={inputField}/>
+                <Rank name={user.name} entries={user.entries}/>
+                <ImageLinkForm onInputChange={onInputChange} onRequestFaceMatch={onRequestFaceMatch} inputField={inputField} id={user.id}/>
                 <FaceRecognition imageUrl={inputField} faceBox={faceBox} />
               </div>
             : <Signin/>

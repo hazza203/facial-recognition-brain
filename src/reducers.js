@@ -3,7 +3,8 @@ import {
 	REQUEST_FACE_MATCH_PENDING,
 	REQUEST_FACE_MATCH_SUCCESS,
 	REQUEST_FACE_MATCH_FAILED,
-	USER_CHANGED
+	USER_CHANGED,
+	INCREMENT_ENTRIES
 	//ROUTE_CHANGED
 } from './constants.js'
 
@@ -82,6 +83,11 @@ export const userChanged = ( state=initial_user_state, action={} ) => {
 	switch(action.type){
 		case USER_CHANGED: 
 			return Object.assign({}, state, {user: action.payload})
+		case INCREMENT_ENTRIES: 
+			let user = state.user
+			user.entries++
+			console.log(user.entries)
+			return Object.assign({}, state, {user: user})
 		default: 
 			return state
 	}

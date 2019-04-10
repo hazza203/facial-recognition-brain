@@ -86,7 +86,7 @@ class Signin extends React.Component {
 				})
 			}).then(response => response.json())
 				.then(data => {
-					if(data !== 'invalid login') {
+					if(data.id) {
 						user = data
 						routeTo = 'home'
 						onSignin()

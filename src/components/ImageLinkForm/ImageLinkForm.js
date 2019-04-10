@@ -3,6 +3,7 @@ import './ImageLinkForm.css'
 import {requestFaceMatch} from '../../actions.js'
 import { connect } from 'react-redux'
 
+
 const mapStateToProps = (state) => {
   return {
     inputField: state.inputChanged.inputField,
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onRequestFaceMatch: () => dispatch(requestFaceMatch(ownProps.inputField))
+    onRequestFaceMatch: () => dispatch(requestFaceMatch(ownProps.inputField, ownProps.id))
   }
 }
 
