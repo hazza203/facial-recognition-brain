@@ -15,36 +15,11 @@ const db = knex({
 	}
 })
 
-db.select('*').from('users').then(data => {
-	console.log(data)
-})
-
 const app = express()
 
 app.use(bodyParser.json())
 app.use(cors())
  
-const database = {
-	users: [
-		{
-			id: '100',
-			name: 'John',
-			email: 'john@gmail.com', 
-			entries: 0,
-			passwordHash: "$2a$10$3FaRXuG03pnQk7WchoT/Juc6raNqzb4DTLxKSEPzjTtSQF0MuS.Z6",
-			joined: new Date()
-		},
-		{
-			id: '101',
-			name: 'Sally',
-			email: 'sally@gmail.com', 
-			entries: 0,
-			passwordHash: "$2a$10$ooInmbpeP9VPg1YoJkVj1uaIWd6OkOYZ9v.zbGiU3YUKV9rCP1m6C",
-			joined: new Date()
-		}
-	],
-}
-
 //Get all users (tbh not safe at all)
 app.get('/', (req, res) => {
 	res.send(database.users)
@@ -115,16 +90,6 @@ app.put('/image', (req, res) => {
 		res.json(entries[0])
 	}).catch(err => res.status(400).json('Failed to update'))
 })
-
-//Function used to get find the user object by id
-function getUser(id){
-	for(let i = 0; i < database.users.length; i++){
-		if(database.users[i].id === id){
-			return database.users[i]
-		}
-	}
-	return undefined
-}
 
 //Initial function on run
 app.listen(3000, () => {
