@@ -1,6 +1,10 @@
 import React from 'react'
 import './FaceRecognition.css'
 
+/*
+	This component displays the image and the box received
+	from the Clarifai facial recognition API
+*/
 const FaceRecognition = ({imageUrl, faceBox}) => {
 
 	return (

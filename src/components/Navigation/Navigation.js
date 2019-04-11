@@ -1,10 +1,17 @@
+/*
+	This is the navigation component, the navigation is dependant on
+	which view is currently loaded
+*/
+
 import React from 'react'
 import './Navigation.css'
 import { routeChanged, userChanged } from '../../actions.js'
 import { connect } from 'react-redux'
 
+// Default values, routeTo determins which view to load next
+// and an empty user for when the user signs out
 let routeTo = ''
-let user = {
+const user = {
 	id: '',
 	name: '',
 	email: '', 
@@ -12,6 +19,8 @@ let user = {
 	joined: ''
 }
 
+// Need redux state and dispatch to props here to be able to pass values to 
+// the respected functions
 
 const mapStateToProps = (state) => {
   return {
@@ -30,33 +39,21 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
 const Navigation = ({onRouteChange, isSignedIn, onSignOut}) => {
 
+	// If signed in, show the signOut button on the nav
+	// else show the signIn and register buttons
 	if(isSignedIn){
 		return(
 			<nav>
-				<p className='f3 link dim black underline pa3 pointer' onClick={signOut} > Sign Out </p>
+				<p className='f3 link dim black underline pa3 pointer' onClick={() => {routeTo='signIn';onRouteChange()}} > Sign Out </p>
 			</nav>
 		)
 	} else {
 		return(
 			<nav>
-				<p className='f3 link dim black underline pa3 pointer' onClick={signIn} > Sign In </p>
-				<p className='f3 link dim black underline pa3 pointer' onClick={register} > Register </p>
+				<p className='f3 link dim black underline pa3 pointer' onClick={() => {routeTo='signIn';onRouteChange()}} > Sign In </p>
+				<p className='f3 link dim black underline pa3 pointer' onClick={() => {routeTo='register';onRouteChange()}} > Register </p>
 			</nav>
 		)
-	}
-
-	function signIn(){
-		routeTo = 'signIn'
-		onRouteChange()
-	}
-	function register(){
-		routeTo = 'register'
-		onRouteChange()
-	}
-	function signOut(){
-		routeTo = 'signIn'
-		onSignOut()
-		onRouteChange()
 	}
 }
 

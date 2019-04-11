@@ -1,3 +1,6 @@
+/*
+ Created by Harry Parkinson: 2019
+*/
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
@@ -12,6 +15,7 @@ import FaceRecognition from './components/FaceRecognition/FaceRecognition.js'
 import { particleOptions } from './particleOptions.js'
 import {routeChanged, inputChanged, requestFaceMatch, userChanged} from './actions.js'
 
+//Initializing state through redux
 const mapStateToProps = (state) => {
   return {
     route: state.routeChanged.route,
@@ -24,6 +28,7 @@ const mapStateToProps = (state) => {
   }
 }
 
+//Initialising redux functions
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     onInputChange: (event) => dispatch(inputChanged(event.target.value)),
@@ -35,19 +40,21 @@ const mapDispatchToProps = (dispatch, ownProps) => {
  
 class App extends Component {
 
-  componentDidMount(){
-    
-  }
-
+  //Render the app
   render() {
+    // Get state const's to pass to the required components
     const { route, user, isSignedIn, inputField, onInputChange, onRequestFaceMatch, onRouteChange, faceBox} = this.props
     console.log(user)
     return (
       <div className="App">
+        {/* Load particles third party background, view file particleOptions.js for config*/}
         <Particles className='particles'
           params={particleOptions}/>
+        {/*Navigation is loaded regardless of which view we wish to load*/}
         <Navigation onRouteChange={onRouteChange} isSignedIn={isSignedIn} onSignOut={userChanged} />
         {
+          //Simple if statement to decide which view to load
+          // Sign in view is default
           route === 'register' ? 
             <Register/>
           : (route === 'home' ?

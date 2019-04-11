@@ -11,6 +11,7 @@ import * as serviceWorker from './serviceWorker';
 import 'tachyons';
 
 const logger = createLogger();
+// Initializing Redux: Combine reducers and create store wrap App around Provider(store)
 const rootReducer = combineReducers({routeChanged, inputChanged, requestFaceMatch, userChanged});
 const store = createStore(rootReducer, applyMiddleware(thunkMiddleware, logger));
 

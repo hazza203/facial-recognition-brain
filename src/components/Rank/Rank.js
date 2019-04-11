@@ -1,5 +1,8 @@
 import React from 'react'
 
+// Component to display the rank and num of entries the user has
+// It is passed the users name and entries
+
 const Rank = ({name, entries}) => {
 
 	return (

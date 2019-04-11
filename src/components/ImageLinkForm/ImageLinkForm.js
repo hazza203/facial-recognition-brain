@@ -1,9 +1,16 @@
+/*
+	This component displays a paragraph introducing the Face Matcher
+	and provides an input field which the user can enter the url of
+	the image they which to test 
+*/
+
 import React from 'react'
 import './ImageLinkForm.css'
 import {requestFaceMatch} from '../../actions.js'
 import { connect } from 'react-redux'
 
-
+// Redux map state and dispatch to props is needed here to be able to pass the values 
+// into the requestFaceMatch function
 const mapStateToProps = (state) => {
   return {
     inputField: state.inputChanged.inputField,
