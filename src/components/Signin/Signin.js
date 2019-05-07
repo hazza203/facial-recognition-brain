@@ -53,7 +53,8 @@ class Signin extends React.Component {
 		 	touched: {
         signInEmail: false,
         signInPassword: false,
-      }
+      },
+      failedSignin: false,
 		}
 	}
 
@@ -78,7 +79,7 @@ class Signin extends React.Component {
 
 	render() {
 		const {onRouteChange, onSignin} = this.props
-		const { signInEmail, signInPassword } = this.state;
+		const { signInEmail, signInPassword, failedSignin } = this.state;
 		const errors = validate(signInEmail, signInPassword);
     const isDisabled = Object.keys(errors).some(x => errors[x]);
 
@@ -100,12 +101,18 @@ class Signin extends React.Component {
 				})
 			}).then(response => response.json())
 				.then(data => {
+					console.log(data)
 					if(data.id) {
 						user = data
 						routeTo = 'home'
 						onSignin()
 						onRouteChange()
+					} else {
+						this.setState({failedSignin: true})
 					}
+				})
+				.catch(err => {
+					console.log(err)
 				})
 		}
 
@@ -116,6 +123,9 @@ class Signin extends React.Component {
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 				      <legend className="f1 fw6 ph0 mh0 ttu">Sign In</legend>
 				      <div className="mt3">
+					      {
+									failedSignin && <label style={{backgroundColor: '#FF7D32'}} className="white br4 db fw6 ma2 pa2 lh-copy f6" htmlFor="pError">Sorry, either the password or email are incorrect. If you don't have an account please register.</label>
+								}
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 				        {/*onBlur = Has been touched*/}
 				        {/*style = If error, orange border, else normal black*/}
