@@ -117,8 +117,8 @@ class Signin extends React.Component {
 		}
 
 		return (
-			<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-				<main className="pa4 black-80">
+			<article className="br3 ba --white-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+				<main className="pa4 white-80">
 				  <div className="measure">
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 				      <legend className="f1 fw6 ph0 mh0 ttu">Sign In</legend>
@@ -129,9 +129,9 @@ class Signin extends React.Component {
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 				        {/*onBlur = Has been touched*/}
 				        {/*style = If error, orange border, else normal black*/}
-				        <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+				        <input className="pa2 white input-reset ba bg-transparent hover-bg-black hover-white w-100" 
 				        	onBlur={this.handleBlur('signInEmail')}
-				        	style={shouldMarkError('signInEmail') ? {border: '1px solid #FF7D32'} : {border: '1px solid black'}} 
+				        	style={shouldMarkError('signInEmail') ? {border: '1px solid #FF7D32'} : {border: '1px solid white'}} 
 				        	type="email" name="email-address" id="email-address" 
 				        	onChange={this.onEmailChange}/>
 					        {
@@ -146,7 +146,7 @@ class Signin extends React.Component {
 				        {/*style = If error, orange border, else normal black*/}
 				        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
 				        	onBlur={this.handleBlur('signInPassword')}
-				        	style={shouldMarkError('signInPassword') ? {border: '1px solid #FF7D32'} : {border: '1px solid black'}}  
+				        	style={shouldMarkError('signInPassword') ? {border: '1px solid #FF7D32'} : {border: '1px solid white'}}  
 				        	type="password" name="password"  id="password"
 				        	onChange={this.onPasswordChange} 
 				        	onKeyPress={event => {
@@ -165,11 +165,11 @@ class Signin extends React.Component {
 				      <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" /> Remember me</label>
 				    </fieldset>
 				    <div className="">
-				      <input disabled={isDisabled} className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+				      <input disabled={isDisabled} className="b white ph3 pv2 input-reset ba b--white bg-transparent grow pointer f6 dib" 
 				      	type="submit" value="Sign in" onClick={onSubmitSignIn} />
 				    </div>
 				    <div className="lh-copy mt3">
-				      <p onClick={() => {routeTo='register'; onRouteChange()}} className="f6 link black db grow pointer">Register</p>
+				      <p onClick={() => {routeTo='register'; onRouteChange()}} className="f6 link white db grow pointer">Register</p>
 				    </div>
 				  </div>
 				</main>

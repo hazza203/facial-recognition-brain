@@ -115,18 +115,18 @@ class Register extends React.Component {
 
 		//Render the component
 		return (
-			<article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
-				<main className="pa4 black-80">
+			<article className="br3 ba --white-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+				<main className="pa4 white-80">
 				  <div className="measure">
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
 				      <legend className="f1 fw6 ph0 mh0 ttu">Register</legend>
 				      <div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="name">Name</label>
 				        {/*onBlur = Has been touched*/}
-				        {/*style = If error, orange border, else normal black*/}
-				        <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+				        {/*style = If error, orange border, else normal white*/}
+				        <input className="pa2 white input-reset ba bg-transparent hover-bg-white hover-black w-100" 
 				        	onBlur={this.handleBlur('name')}
-				        	style={shouldMarkError('name') ? {border: '1px solid #FF7D32'} : {border: '1px solid black'}}
+				        	style={shouldMarkError('name') ? {border: '1px solid #FF7D32'} : {border: '1px solid white'}}
 				        	onChange={this.onNameChange}
 				        	type="text" name="name"  id="name" />
 			        	{
@@ -138,10 +138,10 @@ class Register extends React.Component {
 				      <div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
 				    	  {/*onBlur = Has been touched*/}
-				        {/*style = If error, orange border, else normal black*/}
-				        <input className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+				        {/*style = If error, orange border, else normal white*/}
+				        <input className="pa2 white input-reset ba bg-transparent hover-bg-white hover-black w-100" 
 				       		onBlur={this.handleBlur('email')}
-				        	style={shouldMarkError('email') ? {border: '1px solid #FF7D32'} : {border: '1px solid black'}}
+				        	style={shouldMarkError('email') ? {border: '1px solid #FF7D32'} : {border: '1px solid white'}}
 				        	onChange={this.onEmailChange}
 				        	type="email" name="email-address"  id="email-address" />
 				        	{
@@ -153,10 +153,10 @@ class Register extends React.Component {
 				      <div className="mv3">
 				        <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
 				    	  {/*onBlur = Has been touched*/}
-				        {/*style = If error, orange border, else normal black*/}
-				        <input className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+				        {/*style = If error, orange border, else normal white*/}
+				        <input className="b white pa2 input-reset ba bg-transparent hover-bg-white hover-black w-100" 
 				        	onBlur={this.handleBlur('password')}
-				        	style={shouldMarkError('password') ? {border: '1px solid #FF7D32'} : {border: '1px solid black'}}
+				        	style={shouldMarkError('password') ? {border: '1px solid #FF7D32'} : {border: '1px solid white'}}
 				        	onChange={this.onPasswordChange}
 				        	type="password" name="password"  id="password" 
 				        	onKeyPress={event => {
@@ -174,7 +174,7 @@ class Register extends React.Component {
 				      <label className="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" /> Remember me</label>
 				    </fieldset>
 				    <div className="">
-				      <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
+				      <input className="b ph3 pv2 input-reset ba b--white bg-transparent grow pointer f6 dib" 
 				      	disabled={isDisabled}
 				      	type="submit" value="Register Now!" onClick={onSubmitRegister} />
 				    </div>

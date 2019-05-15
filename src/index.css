@@ -4,7 +4,8 @@ body {
   font-family: 'Montserrat', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-	background: linear-gradient(90deg, rgb(128, 255, 211), rgb(88, 255, 233), rgb(69, 216, 255), rgb(62, 197, 255), rgb(70, 178, 234));
+	background: #222128;
+	color: white;
 }
 
 code {

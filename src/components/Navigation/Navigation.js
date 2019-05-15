@@ -44,14 +44,14 @@ const Navigation = ({onRouteChange, isSignedIn, onSignOut}) => {
 	if(isSignedIn){
 		return(
 			<nav>
-				<p className='f3 link dim black underline pa3 pointer' onClick={() => {routeTo='signIn';onRouteChange()}} > Sign Out </p>
+				<p className='f3 link dim white underline pa3 pointer' onClick={() => {routeTo='signIn';onRouteChange()}} > Sign Out </p>
 			</nav>
 		)
 	} else {
 		return(
 			<nav>
-				<p className='f3 link dim black underline pa3 pointer' onClick={() => {routeTo='signIn';onRouteChange()}} > Sign In </p>
-				<p className='f3 link dim black underline pa3 pointer' onClick={() => {routeTo='register';onRouteChange()}} > Register </p>
+				<p className='f3 link dim white underline pa3 pointer' onClick={() => {routeTo='signIn';onRouteChange()}} > Sign In </p>
+				<p className='f3 link dim white underline pa3 pointer' onClick={() => {routeTo='register';onRouteChange()}} > Register </p>
 			</nav>
 		)
 	}

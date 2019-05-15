@@ -1,7 +1,7 @@
 export const particleOptions = {
   "particles": {
     "number": {
-      "value": 80,
+      "value": 60,
       "density": {
         "enable": true,
         "value_area": 800
@@ -14,7 +14,7 @@ export const particleOptions = {
       "type": "circle",
       "stroke": {
         "width": 0,
-        "color": "#000000"
+        "color": "#ff00ff"
       },
       "polygon": {
         "nb_sides": 5
@@ -48,7 +48,7 @@ export const particleOptions = {
     "line_linked": {
       "enable": true,
       "distance": 150,
-      "color": "#ffffff",
+      "color": "#00ff00",
       "opacity": 1,
       "width": 2
     },
